@@ -3,17 +3,17 @@
 
 Currently in submission. 
 
-* [**arXiv Link**](TODO)
+* [**arXiv Link (TODO)**](TODO)
 
 ### Artifacts
 
 Each experiment is named either a **`baseline-X`** or **`hivemind-X`** run, whether it was running on a single node, or with multiple nodes. 
 The Hivemind experiments have multiple runs, with the **`trainmonitor`** tracking the training progress, and the **`bee`**-processes, that run each on a single node, contribute to the training progress.
 
-All experiments were logged via [**Weights & Biases (W&B)**](wandb.ai) and the experiment names are described in a Google Docs page. The different types of experiments (`Model Suitability`, `Geo-Distributed Performance`, `Multi-Cloud Performance`) are color-coded and correspond to the sections in the paper.
+All experiments were logged via [**Weights & Biases (W&B)**](wandb.ai) and the experiment names are described in a Google Docs page. The different types of experiments (`Model Suitability`, `Geo-Distributed Performance`, `Multi-Cloud Performance`, `Hybrid-Cloud Performance`) are color-coded and correspond to the sections in the paper.
 
-* [**W&B Project**](TODO)
-* [**Google Docs Experiment Page**](TODO)
+* [**Public W&B Project**](https://wandb.ai/kubework/paper-2023)
+* [**Google Docs Experiment Page**](https://docs.google.com/spreadsheets/d/18ZR-8blrsJFppky4uEqXNRqScZbp955yRHkyCnXpxKU/edit?usp=sharing)
 
 All logs from W&B are downloaded and stored at the [**artifacts/wandb**](artifacts/wandb) subdirectory.
 The paper figures are generated via the Jupyter Notebook in [**notebooks**](notebooks) subdirectory.
@@ -22,7 +22,7 @@ When the paper figures are regenerated, the paper can be compiled with `make` in
 
 The only exception are the `iperf` and `ping` logs, which were gathered manually with [**code/network-profile.sh**](code/network-profile.sh) and can be found at [**artifacts/networking**](artifacts/networking) with their respective experimental setup name (check the Google Docs).
 
-### Reproducibility
+### Reproducibility - WIP
 
 All experiments can be reproduced automatically via ansible if the VMs are available.
 
@@ -38,7 +38,7 @@ It took us multiple calls with representatives from the hyperscale clouds to get
 
 ---
 
-#### 1. Prepare The Datasets
+#### 1. Prepare the datasets - WIP
 
 To start the download and preprocessing, you need a Kaggle account and the credentials as JSON.
 Move your downloaded `kaggle.json` to `hivemind-multi-cloud/bin/kaggle.json`
@@ -72,7 +72,7 @@ Exchange all the shards URLs in the dataloading code for the CV and NLP experime
 
 ---
 
-#### 2. Spawn The VMs
+#### 2. Spawn the VMs - WIP
 
 Modify the environment variables in [**bin/00-environment-variables.sh**](bin/00-environment-variables.sh) to point to
   * `LAMBDALABS_SECRET_KEY` - 
@@ -114,7 +114,7 @@ sudo sh cuda_11.6.0_510.39.01_linux.run --silent
 
 ---
 
-#### 3. Run The Experiments
+#### 3. Run the experiments - WIP
 
 **Preliminary**:
 - You have a Weights&Biases account.
@@ -187,7 +187,7 @@ I highly recommend noting down the specific names of the experiments in the Goog
 
 ---
 
-### 4. Recreate the figures
+### 4. Recreate the figures - WIP
 
 The notebooks in [**bin/notebooks**](bin/notebooks) will regenerate by default the paper data.
 To fully reproduce the results, you will need to replace my experiment names with the newly generated ones.
