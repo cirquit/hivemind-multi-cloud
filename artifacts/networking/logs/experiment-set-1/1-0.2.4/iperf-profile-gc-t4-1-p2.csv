@@ -1,0 +1,6 @@
+timestamp,local_hostname,target_hostname,target_ip,bandwidth,bandwidth_metric,avg_ping_ms
+2023-04-06_15-39-24,gc-t4-1,gc-t4-3,34.135.186.2,6.87,Gbits/sec,1.515
+2023-04-06_15-39-40,gc-t4-1,gc-t4-3,34.135.186.2,6.84,Gbits/sec,1.552
+2023-04-06_15-39-55,gc-t4-1,gc-t4-3,34.135.186.2,6.67,Gbits/sec,1.514
+2023-04-06_15-40-10,gc-t4-1,gc-t4-3,34.135.186.2,6.81,Gbits/sec,1.529
+2023-04-06_15-40-25,gc-t4-1,gc-t4-3,34.135.186.2,6.75,Gbits/sec,1.631

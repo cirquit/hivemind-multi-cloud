@@ -1,0 +1,6 @@
+timestamp,local_hostname,target_hostname,target_ip,bandwidth,bandwidth_metric,avg_ping_ms
+2023-04-13_13-38-28,rtx8000,gc-t4-1,35.227.186.253,95.8,Mbits/sec,150.602
+2023-04-13_13-38-42,rtx8000,gc-t4-1,35.227.186.253,68.8,Mbits/sec,150.737
+2023-04-13_13-38-57,rtx8000,gc-t4-1,35.227.186.253,53.6,Mbits/sec,150.800
+2023-04-13_13-39-11,rtx8000,gc-t4-1,35.227.186.253,69.1,Mbits/sec,150.590
+2023-04-13_13-39-26,rtx8000,gc-t4-1,35.227.186.253,30.9,Mbits/sec,151.287

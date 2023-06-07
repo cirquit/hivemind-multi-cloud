@@ -1,0 +1,11 @@
+timestamp,local_hostname,target_hostname,target_ip,bandwidth,bandwidth_metric,avg_ping_ms
+2023-04-13_09-37-15,azure-t4-2,gc-t4-1,34.168.221.226,459,Mbits/sec,49.801
+2023-04-13_09-37-29,azure-t4-2,azure-t4-1,40.124.7.46,7.63,Gbits/sec,1.573
+2023-04-13_09-37-43,azure-t4-2,gc-t4-1,34.168.221.226,469,Mbits/sec,49.739
+2023-04-13_09-37-57,azure-t4-2,azure-t4-1,40.124.7.46,7.63,Gbits/sec,1.537
+2023-04-13_09-38-11,azure-t4-2,gc-t4-1,34.168.221.226,472,Mbits/sec,49.849
+2023-04-13_09-38-25,azure-t4-2,azure-t4-1,40.124.7.46,7.62,Gbits/sec,1.514
+2023-04-13_09-38-39,azure-t4-2,gc-t4-1,34.168.221.226,473,Mbits/sec,49.830
+2023-04-13_09-38-53,azure-t4-2,azure-t4-1,40.124.7.46,7.62,Gbits/sec,1.593
+2023-04-13_09-39-08,azure-t4-2,gc-t4-1,34.168.221.226,487,Mbits/sec,49.812
+2023-04-13_09-39-22,azure-t4-2,azure-t4-1,40.124.7.46,7.64,Gbits/sec,1.570

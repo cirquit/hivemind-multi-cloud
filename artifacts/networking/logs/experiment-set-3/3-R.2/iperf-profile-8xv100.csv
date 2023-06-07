@@ -1,0 +1,6 @@
+timestamp,local_hostname,target_hostname,target_ip,bandwidth,bandwidth_metric,avg_ping_ms
+2023-04-13_15-43-51,8xv100,lambda-a10-1,152.70.112.150,80.4,Mbits/sec,158.526
+2023-04-13_15-44-05,8xv100,lambda-a10-1,152.70.112.150,52.0,Mbits/sec,158.554
+2023-04-13_15-44-20,8xv100,lambda-a10-1,152.70.112.150,62.1,Mbits/sec,158.502
+2023-04-13_15-44-34,8xv100,lambda-a10-1,152.70.112.150,78.4,Mbits/sec,158.558
+2023-04-13_15-44-49,8xv100,lambda-a10-1,152.70.112.150,76.6,Mbits/sec,158.569

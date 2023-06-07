@@ -1,0 +1,6 @@
+timestamp,local_hostname,target_hostname,target_ip,bandwidth,bandwidth_metric,avg_ping_ms
+2023-05-16_11-49-20,vm-gpu-2-us-1thread,gc-t4-1-us,34.30.130.195,128,Mbits/sec,119.004
+2023-05-16_11-49-35,vm-gpu-2-us-1thread,gc-t4-1-us,34.30.130.195,47.7,Mbits/sec,118.643
+2023-05-16_11-49-49,vm-gpu-2-us-1thread,gc-t4-1-us,34.30.130.195,53.7,Mbits/sec,118.877
+2023-05-16_11-50-04,vm-gpu-2-us-1thread,gc-t4-1-us,34.30.130.195,59.7,Mbits/sec,118.548
+2023-05-16_11-50-18,vm-gpu-2-us-1thread,gc-t4-1-us,34.30.130.195,60.9,Mbits/sec,119.175

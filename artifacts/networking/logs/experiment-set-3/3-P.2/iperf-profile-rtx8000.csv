@@ -1,0 +1,6 @@
+timestamp,local_hostname,target_hostname,target_ip,bandwidth,bandwidth_metric,avg_ping_ms
+2023-04-13_15-45-42,rtx8000,lambda-a10-1,152.70.112.150,65.5,Mbits/sec,159.120
+2023-04-13_15-45-57,rtx8000,lambda-a10-1,152.70.112.150,60.1,Mbits/sec,158.983
+2023-04-13_15-46-11,rtx8000,lambda-a10-1,152.70.112.150,38.7,Mbits/sec,159.119
+2023-04-13_15-46-26,rtx8000,lambda-a10-1,152.70.112.150,69.2,Mbits/sec,158.986
+2023-04-13_15-46-40,rtx8000,lambda-a10-1,152.70.112.150,39.4,Mbits/sec,159.062
