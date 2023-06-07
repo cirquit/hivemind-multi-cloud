@@ -1,0 +1,14 @@
+hivemind @ git+https://github.com/cirquit/hivemind.git@b183aef667e82a4c789476c1f3b085c9f8d965bd
+wandb==0.12.17
+scikit-learn==1.1.1
+python-dotenv==0.20.0
+pandas==1.5.3
+tqdm==4.64.0
+webdataset==0.2.35
+torch==1.13.1
+torchaudio==0.13.1
+torchinfo==1.7.1
+torchvision==0.14.1
+protobuf==3.20.3
+psutil==5.9.3
+transformers==4.27.3
