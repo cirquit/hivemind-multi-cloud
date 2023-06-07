@@ -20,9 +20,9 @@ The paper figures are generated via the Jupyter Notebook in [**notebooks**](note
 If the artifacts subdirectory is deleted, running the Jupyter Notebooks will download all logs on-demand from W&B again.
 When the paper figures are regenerated, the paper can be compiled with `make` in the [**paper**](paper) subdirectory.
 
-The only exception are the `iperf` and `ping` logs, which were gathered manually with [**code/network-profile.sh**](code/network-profile.sh) and can be found at [**artifacts/networking**](artifacts/networking) with their respective experimental setup name (check the Google Docs).
+The only exception are the `iperf` and `ping` logs, which were gathered manually with [**artifacts/networking/network-profile.sh**](artifacts/networking//network-profile.sh) and can be found at [**artifacts/networking**](artifacts/networking) with their respective experimental setup name (check the Google Docs).
 
-### Reproducibility - WIP
+### Reproducibility
 
 All experiments can be reproduced automatically via ansible if the VMs are available.
 
@@ -68,7 +68,7 @@ Create a bucket in B2 with the names from `IMAGENET_B2_BUCKETNAME` and `WIKIPEDI
 ```
 
 After uploading the datasets, get the respective download links by going to "Browse Files" -> "Buckets" -> "imagenet/wikipedia" -> "Click on a shard" -> "Friendly URL".
-Exchange all the shards URLs in the dataloading code for the CV and NLP experiments in [**code/datasets.py**](code/datasets.py).
+Exchange all the shards URLs in the dataloading code for the CV and NLP experiments in [**experiments/code/param/datasets.py**](experiments/code/param/datasets.py).
 
 ---
 
@@ -77,7 +77,7 @@ Exchange all the shards URLs in the dataloading code for the CV and NLP experime
 Modify the environment variables in [**bin/00-environment-variables.sh**](bin/00-environment-variables.sh) to point to
   * `LAMBDALABS_SECRET_KEY` - 
 
-While we do have scripts to automatically spawn GC/AWS/Azure VMs, they are highly specific to the different vendors project names, how they handle SSH keys and networks. We recommend to follow create the following setup and copy the resulting command by yourself.
+While we do have scripts to automatically spawn GC/AWS/Azure VMs, they are highly specific to the different vendors project names, how they handle SSH keys and networks. We recommend to create the following setup and copy the resulting command by yourself.
 
 Configure the network to enable ICMP and Ingress TCP 45555. Enable Spot Pricing. Add at least 30GB of storage space.
 
