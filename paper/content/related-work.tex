@@ -1,0 +1,36 @@
+\textbf{Decentralized deep learning.}
+Training with unreliable peers has been studied in a collaborative setting before, resulting a the Distributed Deep Learning in Open Collaborations (DeDLOC)~\cite{diskin2021distributed} algorithm, on which the Hivemind framework~\cite{hivemind} is based.
+It can interpolate between traditional distributed DL algorithms like parameter servers~\cite{li2014scaling}, decentralized SGD~\cite{lian2017can}, or All-Reduce SGD~\cite{sergeev2018horovod}.
+As a proof-of-concept, an ALBERT-large model was successfully trained on the Bengali language with over 40 participants over multiple days, where most participants only contributed periodically.
+We used the Hivemind framework for all of our experiments, as it provided the base for training on spot instances in high latency, low bandwidth networks.
+
+An iterative SGD implementation, MoshpitSGD~\cite{ryabinin2021moshpit} is used in Hivemind, which focuses on an averaging protocol that deals with unstable peers and network connectivity.
+It applies to any unstable compute situation, such as volunteer computing or spot instance training.
+They have proven its applicability by training ResNet50 and the ALBERT models on homogeneous and heterogeneous hardware 1.3x and 1.5x faster to a fixed accuracy than other decentralized training algorithms.
+While we profiled the training speed on different hardware, rather than training to an accuracy, we can confirm the linear communication scaling with increasing peer counts.
+
+SWARM~\cite{ryabinin2023swarm} applies both previous techniques and adds model parallelism to the mix by creating randomized pipelines between nodes and rebalancing them in case of failures.
+The authors find a crucial insight in the "square-cube" law, which argues for better training scalability with larger model sizes; as the size increases linearly, so does the communication time, while the calculation time increases quadratically.
+We add to that by analyzing distributed training for smaller model sizes that pose different trade-offs. 
+We show that while the square-cube law still holds for increasing model sizes, under consideration of granularity, we can still train small models.
+
+\textbf{Deep learning on spot instances.}
+Using spot instances to be cost-efficient compared to on-demand pricing is a hot topic.
+DeepSpotCloud~\cite{lee2017deepspotcloud} is a system that uses the AWS API to automatically migrate a DL task with checkpointing whenever the spot instance is terminated.
+The authors note that the volatility of GPU instance pricing and interruptions have a unique pattern compared to non-accelerated VMs, and solve this by using intercontinental provisioning.
+We noticed the same trends of high interruption ratios in our experiments.
+However, we have shown that geo-distributed training is possible until granularity permits it, which poses a possibility for ever-migrating training between continents without checkpointing. 
+
+Amazon Sagemaker~\cite{das2020sagemaker} is an AutoML system that provides an easy entry to the entire ML pipeline by only needing a dataset location, a prediction target definition, and the resulting artifact storage location.
+It supports automatic spot VM provisioning until a cost threshold is reached by checkpointing the progress.
+While useful for specific tasks, it does not support distributed GPU training, eliminating the potential of accelerating with more GPUs than fit on one hypervisor.
+
+The analysis by Yang et al.~\cite{yang2022schedulingml} investigates maximizing a target accuracy from a spot pricing versus time perspective.
+Yang et al. managed to only use 23-48\% of the on-demand pricing budget to use spot instances and complete the same deep learning workloads.
+Linear programming was used to decide how to provision the VMs with different cost-utility trade-offs.
+While this shows the potential of utilizing multiple clouds and continents for non-distributed tasks, we evaluated the distributed spot training problem from the throughput, cost, and model size perspective on different hardware setups.
+By including our insights, their technique for scheduling on spot instances could be adapted to optimize the total throughput of all peers.
+
+Skypilot~\cite{yang2023skypilot} is a logical continuation of prior works which implements a broker system so users can submit their (not necessarily DL) hardware requirements, and it tries to provision the necessary resources on any supported cloud.
+It features a preemption analysis that counts the number of interruptions in a zone and can decide to migrate whenever they cross a certain threshold.
+We have shown that multi-cloud, hybrid-cloud, and geo-distributed DL training is possible, and by adding our insights into their provisioning system, it would open up auto-migrated, decentralized DL training for the best spot prices in the world.

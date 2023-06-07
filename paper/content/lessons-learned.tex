@@ -1,0 +1,57 @@
+We find it important to summarize our findings more generically to provide guidance for DL practitioners that want to perform distributed spot training in the cloud. These lessons are based on the ~\Cref{sec:model-suitability,sec:geodistributed-performance,sec:multicloud-performance,sec:hybrid-cloud-performance}.
+
+\textbf{Small model training still scales.}
+We have shown that models between 12M-560M parameters can still be trained in a decentralized, distributed fashion achieving a speedup of up to 4.37x on eight Ampere-GPUs.
+The limiting factor as to when a model is suitable for (geo-)distributed training is the target batch size which all peers need to accumulate until synchronization happens.
+We found a TBS of 32K suitable to not only train in a single zone, but even see a speedup when using VMs in four different continents.
+As long as the optimizer can handle big-batch training and the dataset is big enough to accommodate large batches, the remaining variable to be optimized is the throughput per \$ which we evaluated for three cloud providers with T4 GPUs.
+Finally, we found that small models induce less traffic over larger models over time, even at a much higher averaging rate, making them better suited for cost-efficient training than large models.
+
+\textbf{Egress costs can take up most of the total cost.}
+Egress pricing for the NLP experiments overtook the spot and the on-demand costs of T4 GPUs when training on four continents or even in two zones.
+This results from a smaller granularity, as RoBERTaXLM training has a high throughput and a high parameter count, which leads to more data being sent between peers when averaging.
+Under the current pricing models, AWS has the best cost-efficiency for geo-distributed training, while GC and Azure are best at training in a single zone.
+The biggest cost-saving potential lies in cloud providers that do not charge for egress at all, like LambdaLabs.
+
+% 0.5 comm -> 0.50 comm
+% 0.5 calc -> 0.25 calc
+% 1 / 0.75 = 1.33
+
+% 0.5 comm -> 0.50 comm
+% 5 calc   -> 2.5 calc
+% 10 / 3 = 3.33
+
+\textbf{Granularity is important to evaluate scalability.}
+We found that the ratio between calculation and communication time, granularity, is the most important metric to track when deciding on distributed training suitability.
+It enables us to compare the scalability potential between different models on the same hardware due to summarizing their model size and throughput ratio.
+Additionally, it gives a value to the cost-efficiency: With a granularity of exactly 1, the potential speedup when doubling the number of VMs is, at best, 1.33x due to halving the calculation time.
+However, with a granularity of 10, the speedup with double the VMs is, at best, 1.83x due to the communication time playing a less significant role.
+With this, we can estimate training performance with additional resources.
+
+\textbf{Geo-distributed multi-cloud training is possible and is cost-efficient.}
+Even with the current teething pains of Hivemind, we got a speedup in all of our experimental setups of intra-zone, transatlantic, and intercontinental settings as long as the granularity of the task permitted it.
+Using older and cheaper Tesla GPUs at spot pricing is not only more cost-efficient than the DGX-2 offering, but even trumps the competitive pricing model of LambdaLabs, all while including egress costs.
+Our network profiling showed that the current training limitations are not primarily the bandwidth but rather the intercontinental latency and the task's granularity.
+If the granularity is already low at high bandwidth, it can only worsen when used in a high latency, low bandwidth network.
+When considering both, estimating the potential cost-savings of investing in a multi-/hybrid-cloud scenario is possible.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

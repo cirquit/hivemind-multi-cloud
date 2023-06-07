@@ -1,0 +1,29 @@
+In this section, we describe how the Hivemind framework works and how it can enable distributed spot training.
+
+\subsection{Hivemind}
+\label{ssec:hivemind}
+
+Hivemind~\cite{hivemind} is a PyTorch-based~\cite{paszke2019pytorch} framework developed initially to enable collaborative DL training where participants could donate their heterogeneous hardware to train a single model together in a data-parallel fashion.
+Its main difference to other state-of-the-art distributed training frameworks, such as PyTorch DDP~\cite{li2020pytorch} and DeepSpeed~\cite{rasley2020deepspeed}, is that it runs in a decentralized fashion and can handle peers that drop out at any stage of the training. 
+It does so with two features: a distributed hash table~\cite{maymounkov2002kademlia} (DHT) which spans over all participating peers for metadata storage, such as training progress and peer health, and a gradient averaging algorithm that is designed to reduce the impact of lost gradients.
+A key difference to other distributed training frameworks is the definition of a \textit{hivemind epoch}, which is the number of samples that must be aggregated before an averaging step is performed.
+This sample count is called the \textit{target batch size} (TBS), which corresponds to the minibatch size in standard DL training.
+The DHT is used for coordination, and shortly before the TBS is predicted to be reached, the peers start to form the initial groups for averaging.
+The time allocated for group forming is called \textit{matchmaking time} and typically runs asynchronously to the training (cf.~\Cref{sec:model-suitability}).
+The individual peer gradients are accumulated locally and sent to the other peers via an adaptive all-reduce algorithm (MoshpitSGD~\cite{ryabinin2021moshpit}).
+The next hivemind epoch starts after each peer applies the accumulated gradients to the local model.
+The advantage of Hivemind for geo-distributed training comes from cumulating different techniques, such as Delayed Parameter Updates~\cite{ren2021zerooffload}, big-batch training~\cite{you2019large} and aggressive communication quantization~\cite{dettmers20168bit}.
+All of these combined reduce time and frequency of the communication rounds, which in turn makes training on heterogeneous devices and low-bandwidth networks possible.
+
+
+\subsection{Distributed Spot Training}
+
+In this paper, we focus only on models that fit into the memory of a single GPU, as we are interested in utilizing data parallelism on cheaper and more readily available hardware.
+However, our insights are applicable to larger models with techniques such as ZeRo offloading~\cite{ren2021zerooffload}, more aggressive quantization~\cite{wortsman2023stable} and even model parallelism~\cite{ryabinin2023swarm}.
+The current options for data parallelism are either using multiple GPUs on the same node (e.g., a DGX system with eight GPUs) or having multiple nodes with a GPU each in the same high-bandwidth network (>25Gbits) to minimize communication time.
+The latter does not work on cheap but interruptable instances, while the former has some use in the form of Amazon Sagemaker or Skypilot but is limited to a single node and is typically very pricey (spot pricing for DGX-2 is 6.30\$/h versus 8xT4 at 0.72\$/h on GC).
+However, using Hivemind, a new training scenario can become feasible: Distributed training in a decentralized fashion on interruptable VMs with bandwidths of <1 Gbits.
+Since spot instance prices change hourly depending on the time of day and zone availability~\cite{lee2017deepspotcloud}, and can vary widely between cloud providers (cf.~\Cref{tab:cloud-pricing}), training between continents and in multiple clouds could potentially be more cost-effective than using a single, more computationally powerful node at spot prices.
+
+With the newly added training setups from~\Cref{fig:cv-sps-trade-off} (circled), it was not previously possible to choose the best option, and having the option to combine older, more available GPUs is a net benefit for both consumers as well as cloud providers.
+Our paper shows that it is possible to train on multiple clouds across multiple continents and provides guidelines on how to accomplish this cost-efficiently.

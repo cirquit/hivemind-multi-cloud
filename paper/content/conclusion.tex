@@ -1,0 +1,7 @@
+This paper analyzes multi- and hybrid-cloud training in a decentralized fashion on spot instances. 
+We define the lower bounds of model sizes that can be scaled cost-efficiently using the granularity metric to estimate their suitability for distributed training in low-bandwidth, high-latency situations.
+We show that training on multiple cloud providers and four continents still scales with additional compute resources.
+Alternatively to the current use of spot instances in DL, we show the potential of using spot instances in a distributed, decentralized way by being more cost-efficient with eight T4 instances over a DGX-2 from the same cloud provider while paying additional egress costs.
+Finally, we provide an intuition about where costs in such a training scenario come from and how different model sizes from CV and NLP affect throughput and costs.
+Our work empowers practitioners to utilize spot-priced instances for distributed deep learning with relatively small models. 
+Our insights show some potential that can further improve distributed training performance, such as optimizers with higher minibatch sizes and improvements regarding the communication time with, e.g., better compression. 
