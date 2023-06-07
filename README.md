@@ -3,7 +3,7 @@
 
 Currently in submission. 
 
-* [**arXiv Link (TODO)**](TODO)
+* [**arXiv Link**](https://arxiv.org/abs/2306.03163)
 
 ### Artifacts
 
