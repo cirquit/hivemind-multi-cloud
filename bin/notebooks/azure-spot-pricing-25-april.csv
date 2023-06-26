@@ -1,0 +1,4 @@
+InstanceTier,InstanceType,Region,OndemandPrice,SpotPrice,IF,Savings (%),Date
+Standard,NC4as_T4_v3,US West 3,0.526,0.053,N/A,90,2023-04-25 10:00:00
+Standard,NC4as_T4_v3,US West 2,0.526,0.176,N/A,66,2023-04-25 10:00:00
+Standard,NC4as_T4_v3,US West,0.631,0.171,N/A,73,2023-04-25 10:00:00

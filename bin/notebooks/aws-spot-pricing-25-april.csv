@@ -1,0 +1,6 @@
+InstanceType,Region,AZ,Availability,Interruption Ratio,SpotPrice ($),Savings (%),Date
+g4dn.2xlarge,us-west-1,usw1-az3,3,3,0.271,70,2023-04-25 10:40:00
+g4dn.2xlarge,us-west-1,usw1-az1,3,3,0.272,70,2023-04-25 10:40:00
+g4dn.2xlarge,us-west-2,usw2-az3,3,2.5,0.458,39,2023-04-25 10:40:00
+g4dn.2xlarge,us-west-2,usw2-az2,3,2.5,0.463,38,2023-04-25 10:40:00
+g4dn.2xlarge,us-west-2,usw2-az1,3,2.5,0.466,38,2023-04-25 10:40:00

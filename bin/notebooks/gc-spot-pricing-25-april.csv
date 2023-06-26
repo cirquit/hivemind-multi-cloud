@@ -1,0 +1,5 @@
+InstanceType,Region,OnDemand Price,Spot Price,Savings (%),Date
+n1-standard-8,us-west4,0.428,0.043,90,2023-04-25 10:00:00
+n1-standard-8,us-west1,0.38,0.08,79,2023-04-25 10:00:00
+n1-standard-8,us-west2,0.456,0.096,79,2023-04-25 10:00:00
+n1-standard-8,us-west3,0.456,0.076,83,2023-04-25 10:00:00
