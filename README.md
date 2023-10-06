@@ -22,6 +22,14 @@ When the paper figures are regenerated, the paper can be compiled with `make` in
 
 The only exception are the `iperf` and `ping` logs, which were gathered manually with [**artifacts/networking/network-profile.sh**](artifacts/networking//network-profile.sh) and can be found at [**artifacts/networking**](artifacts/networking) with their respective experimental setup name (check the Google Docs).
 
+### Recreate the figures
+
+The notebooks in [**bin/notebooks**](bin/notebooks) will regenerate the paper figures by default.
+To fully reproduce the results, you will need to replace my experiment names with the newly generated ones.
+After that, simply running them in a local virtualenv should create the figures in-place in the [**paper/figures**](paper/figures) directory.
+
+A single `make` in the `paper` subdirectory should recreate all figures.
+
 ### Reproducibility
 
 All experiments can be reproduced automatically via ansible if the VMs are available.
@@ -184,16 +192,6 @@ sudo sh cuda_11.6.0_510.39.01_linux.run --silent
 26. DGX-2 + 8xA10 (Lambda US) `./run-cv-nlp-32k-multi.sh`
 
 I highly recommend noting down the specific names of the experiments in the Google Docs to be able to regenerate the figures. 
-
----
-
-### 4. Recreate the figures - WIP
-
-The notebooks in [**bin/notebooks**](bin/notebooks) will regenerate by default the paper data.
-To fully reproduce the results, you will need to replace my experiment names with the newly generated ones.
-After that, simply running them in a local virtualenv should create the figures in-place in the [**paper/figures**](paper/figures) directory.
-
-A single `make` in the `paper` subdirectory should recreate all figures.
 
 ---
 
